@@ -85,6 +85,7 @@
   <script  src="/js/color-schema.js" ></script>
   
 
+  
 
   <!-- KaTeX 全站自动渲染 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
@@ -92,16 +93,18 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      renderMathInElement(document.body, {
-        delimiters: [
-          {left: "$$", right: "$$", display: true},
-          {left: "$", right: "$", display: false}
-        ]
-      });
+      // 只渲染文章内容，避免影响其他页面
+      const postContent = document.querySelector('.post-body');
+      if(postContent) {
+        renderMathInElement(postContent, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+          ]
+        });
+      }
     });
   </script>
-
-  
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
