@@ -34,6 +34,7 @@
   
   <title>分类 - 岛与湖</title>
 
+  <!-- 原来的 CSS / JS -->
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
@@ -75,14 +76,27 @@
   <script  src="/js/color-schema.js" ></script>
   
 
-
   
+
+  <!-- KaTeX 全站公式渲染 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-vZTGkZ6xUxPG94qN+zTkdzrB0kS+g2gFmyddqOEd+aKXokz+YG6Ra1q0p5F2e4hu" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-8p5w1QXxWkTxMnM0Vd+q6kG0zYt3bBbz0z0k1gDl0/XsFhPz7K6D6bVMSZkQv0zK" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUOTl7pLrskZr1rj6xZ6MTb1tYj4LM6zv7JpU/dVnlY8+a2L4lNfIRrI2kPka" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false}
+        ]
+      });
+    });
+  </script>
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head>
-
 
 <body>
   
