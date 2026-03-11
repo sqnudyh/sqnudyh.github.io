@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="c:\Users\20492\AppData\Roaming\Typora\typora-user-images\image-20251026222317385.png">
 <meta property="article:published_time" content="2026-03-10T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-03-11T13:33:08.523Z">
+<meta property="article:modified_time" content="2026-03-11T13:38:41.532Z">
 <meta property="article:author" content="岛与湖">
 <meta property="article:tag" content="dy_hu">
 <meta name="twitter:card" content="summary_large_image">
@@ -413,7 +413,7 @@ mjx-container[display="true"] + br {
             
               <div class="markdown-body">
                 
-                <span id="more"></span>
+                <!-- more -->
 
 <h1 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h1><h2 id="ST表"><a href="#ST表" class="headerlink" title="ST表"></a>ST表</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;bits/stdc++.h&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><br><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">1e5</span> + <span class="hljs-number">10</span>;<br><br><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">lg</span> <span class="hljs-params">(N)</span></span>;<br>vector&lt;vector&lt;<span class="hljs-type">int</span>&gt;&gt; <span class="hljs-built_in">fx</span> (<span class="hljs-number">100</span> , <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(N)) , <span class="hljs-built_in">fn</span> (<span class="hljs-number">100</span> , <span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(N));<br>	<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>{<br>	lg[<span class="hljs-number">2</span>] = <span class="hljs-number">1</span>;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">3</span> ; i &lt; N ; i++){<br>		lg[i] = lg[i / <span class="hljs-number">2</span>] + <span class="hljs-number">1</span>;<br>	}<br>}<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>{<br>	cin.<span class="hljs-built_in">tie</span>(<span class="hljs-number">0</span>);<br>	ios::<span class="hljs-built_in">sync_with_stdio</span>(<span class="hljs-number">0</span>);<br>	<span class="hljs-built_in">init</span>();<br>	<span class="hljs-type">int</span> n , q;<br>	cin &gt;&gt; n &gt;&gt; q;<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span> ; i &lt;= n ; i++){<br>		<span class="hljs-type">int</span> a;<br>		cin &gt;&gt; a;<br>		fx[<span class="hljs-number">0</span>][i] = fn[<span class="hljs-number">0</span>][i] = a;<br>	}<br>	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">1</span> ; j &lt;= lg[n] ; j++){<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span> ; i + (<span class="hljs-number">1</span> &lt;&lt; j) - <span class="hljs-number">1</span> &lt;= n ; i++){<br>			fx[j][i] = <span class="hljs-built_in">max</span>(fx[j - <span class="hljs-number">1</span>][i] , fx[j - <span class="hljs-number">1</span>][i + (<span class="hljs-number">1</span> &lt;&lt; (j - <span class="hljs-number">1</span>))]);<br>			fn[j][i] = <span class="hljs-built_in">min</span>(fn[j - <span class="hljs-number">1</span>][i] , fn[j - <span class="hljs-number">1</span>][i + (<span class="hljs-number">1</span> &lt;&lt; (j - <span class="hljs-number">1</span>))]);<br>		}<br>	}<br>	<span class="hljs-keyword">while</span>(q--){<br>		<span class="hljs-type">int</span> l , r;<br>		cin &gt;&gt; l &gt;&gt; r;<br>		<span class="hljs-type">int</span> s = lg[r - l + <span class="hljs-number">1</span>];<br>		cout &lt;&lt; <span class="hljs-built_in">max</span>(fx[s][l] , fx[s][r - (<span class="hljs-number">1</span> &lt;&lt; s) + <span class="hljs-number">1</span>]) &lt;&lt; <span class="hljs-string">"\n"</span>;<br>	}<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>}<br></code></pre></td></tr></table></figure>
 
@@ -892,20 +892,5 @@ mjx-container[display="true"] + br {
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
